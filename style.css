@@ -1,0 +1,338 @@
+*{margin: 0px;background-color: white;font-family: verdana;}
+#nav_1{
+  display: flex;
+  justify-content: space-between;
+  margin-top: -20px;
+  margin-left: 0px;
+  margin-right: 0px;
+  position: fixed;
+  width: 100vw;
+  background-color: white;
+  padding-top: 10px;
+  padding-bottom: 11px;
+  padding-left: 10px;
+  padding-right: 0px;
+}
+#nav_1 h1{
+  font-family: Barlow Condensed, sans-serif;
+  margin: 0px;
+  font-size: 25px;
+  background-color: white;
+}
+#nav_1 i{
+  color: black;
+  font-size: 25px;
+  margin-top: 5px;
+  background-color: white;
+}
+#search_open{
+  margin-right: -200px;
+}
+#chat_open{
+  margin-right: 20px;
+}
+.Contain{
+  margin: 0px;
+}
+.Contain .img img{
+ width: 100%;
+ height: 210px;
+ object-fit: contain;
+}
+.Contain .Title{
+  font-family : verdana;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 7px;
+  margin-right: 7px;
+}
+.Contain .Divider{
+  height: 2px;
+  width: 100%;  
+  margin-top: 5px;
+  background-color: #F1F1F1;
+  margin-bottom: 10px;
+}
+.Contain footer{
+  display: flex;
+  justify-content: ;
+}
+.Contain .profile_pic img{
+  margin-left: 7px;
+  width: 27px;
+  height: 27px;
+  border-radius: 13.5px;
+}
+.Contain .profile_name{
+  margin-top: 8px;
+  margin-right: 7px;
+  margin-left: 7px;
+  font-family : verdana;
+  font-size: 12px;
+  font-weight: bold;
+}
+a{
+  text-decoration: none;
+  color: #000;
+}
+#moza-7{ text-decoration: none;
+  color: #000;margin: 0px;}
+.content .poster img{
+  width: 100vw;
+  height: 220px;
+  object-fit: cover;
+  width: 100vw;
+  margin-top: 30px;
+  
+}
+.content{
+  width: 100vw;
+}
+.content .title .pp img{
+  width: 30px;
+  margin-top: 0px;;
+  border-radius: 15px;
+  height: 30px;
+}
+.content .title{
+  display: flex;
+  margin-top: 05px;
+  margin-left: 5px;
+  margin-bottom: 0px;
+}
+.content .title h1{
+  font-size: 14px;
+  font-weight: 700;
+  width: 100%;
+  margin-top: 0px;
+  margin-left: 5px;
+}
+.content .title i{
+  margin-top: 10px;
+  margin-left: 50px;
+  margin-right: 0px;
+  font-size: 20px;
+}
+.content .pinfo h6{
+  margin-top: 2px;
+  font-size: 11px;
+  color: #8b8b8b;
+  font-weight: 400;
+  margin-left: 0px;
+}
+#time{
+  height: 0px;
+  width: 0px;
+  margin: 0px;
+  visibility: hidden;
+}
+#nav_2{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  position: fixed;
+  width: 100vw;
+  background-color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  bottom: 0;
+}
+#nav_2 img{
+  width: 35px;
+  margin-top: 0px;
+  border-radius: 18px;
+  height: 35px;
+  margin-right: 20px;
+  margin-top: 6px;
+  background-color: #eee;
+}
+#nav_2 i{
+  color: black;
+  font-size: 25px;
+  margin-top: 5px;
+  background-color: white;
+}
+#nav_2 h6{
+  font-size: 10px;
+  font-weight: 500;
+}
+#nav_2 .hots i{
+  color: #FF9D02;
+}
+#nav_2 #add{
+  font-size: 28px;
+  margin-top: 6px;
+}
+#Container{
+  margin-bottom: 100px;
+}
+.dropdown {
+  /*position: relative;*/
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  right: 0;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown:hover .dbt {
+}
+.login_form{
+  display: none;
+  border-radius: 15px;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  text-align: center;  
+  width: 80vw;
+  background-color: #fff;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  margin: auto;
+  position: fixed;
+  z-index: 2;
+  left: 8vw;
+  right: 8vw;
+  top: 50px;
+}
+.login_form h1{
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 30px;
+}
+.login_form input{
+  margin: auto;
+  display: block;
+  text-align: center;  
+  width: 250px;
+  height: 50px;
+  border: none;
+  border-radius: 300px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+  background-color: #f5f5f5;
+}
+.login_form #r__1{
+  text-align: center;  
+  font-size: 10px;
+  font-weight: 400;
+  color: #000;
+  margin-top: 10px;
+  
+}
+.login_form #pro_1{
+  text-align: center;  
+  width: 200px;
+  height: 60px;
+  border: none;
+  border-radius: 300px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+  background-color: #f5f5f5;
+  margin-top: 30px;
+}
+#overlay {
+  position: fixed; 
+  display: none;
+  width: 100%;
+  height: 100%; 
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 1;
+  cursor: pointer;
+}
+.login_form #error{
+  text-align: center;  
+  font-size: 10px;
+  font-weight: 400;
+  color: red;
+  margin-top: 0px;
+}
+.regis_form{
+  display: none;
+  border-radius: 15px;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  text-align: center;  
+  width: 80vw;
+  background-color: #fff;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  margin: auto;
+  position: fixed;
+  z-index: 2;
+  left: 8vw;
+  right: 8vw;
+  top: 50px;
+}
+.regis_form h1{
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 30px;
+}
+.regis_form input{
+  margin: auto;
+  display: block;
+  text-align: center;  
+  width: 250px;
+  height: 50px;
+  border: none;
+  border-radius: 300px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+  background-color: #f5f5f5;
+}
+.regis_form #l__1{
+  text-align: center;  
+  font-size: 10px;
+  font-weight: 400;
+  color: #000;
+  margin-top: 10px;  
+}
+.regis_form #pro_2{
+  text-align: center;  
+  width: 200px;
+  height: 60px;
+  border: none;
+  border-radius: 300px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+  background-color: #f5f5f5;
+  margin-top: 30px;
+}
+.regis_form #error_2{
+  text-align: center;  
+  font-size: 10px;
+  font-weight: 400;
+  color: red;
+  margin-top: 0px;
+}
