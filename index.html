@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Moza - Be Creative</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&display=swap" rel="stylesheet">
+</head>
+<body onload="Call_Data()">
+  <input id="time">  
+  <nav id="nav_1"><h1>MOZA</h1><i class="material-icons md-25" id="search_open">search</i><i class="material-icons md-25" id="chat_open">chat</i></nav>
+    <nav id="nav_2">
+      <div class="home"><i class="material-icons md-25" id="home">home</i><h6>home</h6></div>
+    <div class="hots"><i class="material-icons md-25" id="hots">whatshot</i><h6>hots</h6></div>
+    <i class="material-icons md-25" id="add">add</i>
+    <div class="favorite"><i class="material-icons md-25" id="favorite">subscriptions</i><h6>favorite</h6></div>
+    <div class="profile" id="you"><img id="you_pp"></div>
+  </nav>  
+  <div id="Container"></div>  
+<div id="overlay"></div>
+   <div class="login_form" id="login_form">
+  <h1>Login</h1>
+  <input placeholder="Phone Number" type="tel" id="pn__l">
+  <br>
+  <input placeholder="Password" type="text" id="p__l">
+  <h6 id="r__1" onclick="r__()">I have no account ? 
+registration</h6>  <br>
+  <h6 id="error"></h6>
+  <button id="pro_1" onclick="pro_ok()">LOGIN</button>
+</div>
+  <div class="regis_form" id="regis_form">
+  <h1>Registration</h1>
+  <input placeholder="Phone Number" type="tel" id="pn__r">
+  <br>
+  <input placeholder="Password" type="text" id="p__r"><br>
+  <input placeholder="Name" type="text" id="n__r">
+  
+  <h6 id="l__1" onclick="l__()">I have an account ? 
+Login</h6>
+  <br>
+  
+  <h6 id="error_2"></h6>
+  <button id="pro_2"onclick="pro_ok_2()">REGISTER</button>
+  </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+<script src="./function.js"></script>
+</body>
+</html>
