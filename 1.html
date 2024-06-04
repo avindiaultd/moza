@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profile Edit!</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&display=swap" rel="stylesheet">
+</head>
+<body onload="Call_Data()">
+  <input type="file" class="js-fileElem" accept="image/*" style="display:none">
+  <div class="pic"><a href="#" class="js-fileSelect"><img id="a"src="https://cdn-icons-png.flaticon.com/128/3177/3177440.png">  </a>
+  </div>
+  <div class="name"><!--<h6>ACCOUNT NAME</h6>--><input placeholder="Profile Name" type="text" id="p__r"></div>
+  <div class="read"><!--<h6>ACCOUNT READ</h6><input placeholder="Profile Read" type="text" id="pr__r">--> <textarea id="pr__r" placeholder="Profile Read" name="Text1" cols="40" rows="5"></textarea></div>
+ <button id="close"class="material-icons md-25">close</button>
+ <button id="edit" class="material-icons md-25" onclick="edit()">cloud_upload</button>
+  <h6 id="r"></h6>
+ 
+    <script src="https://www.gstatic.com/firebasejs/3.8.0/firebase.js"></script>
+    <script>
+const config = {
+          apiKey: "AIzaSyBjMWFjGpr04xzmQN9y5LlPGLe2NeI5GnY",
+  authDomain: "moza-c42fb.firebaseapp.com",
+  databaseURL: "https://moza-c42fb-default-rtdb.firebaseio.com/",
+  projectId: "moza-c42fb",
+  storageBucket: "moza-c42fb.appspot.com",
+  messagingSenderId: "256429602324",
+    appId: "1:256429602324:android:30b74a4d50239f65c71901"
+        };
+        firebase.initializeApp(config);
+        
+
+var db = firebase.database();
+      (() => { // protect the lemmings!
+        // Initialize Firebase
+        
+        // Get a reference to the storage service, which is used to create references in your storage bucket
+        const storage = firebase.storage();
+
+        // Create a storage reference from our storage service
+        const storageRef = storage.ref();
+        
+        // Create a child reference
+        const imagesRef = storageRef.child('images');
+        // imagesRef now points to 'images'
+
+        // Create a ref to a file - space.jpg
+        const spaceRef = imagesRef.child('space.jpg');
+        // ^^^ now you should have a "path" in your firebase storage that looks like: 'images/space.jpg'
+
+        // select anchor tag and file input
+        const fileSelect = document.querySelector('.js-fileSelect');
+        const fileElem = document.querySelector('.js-fileElem');
+
+        // click handler for fileElem
+        fileSelect.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            // trigger click on input type="file"
+            // this will call the change event defined below
+            if (fileElem) {
+                fileElem.click();
+            }
+        });
+
+        // change handler for fileSelect
+        fileElem.addEventListener('change', (e) => {
+            // e.target.files contains File object references
+            // to all chosen items by user
+            console.log(e.target.files);
+
+            /* ADDED THESE LINES */
+            // since e.target.files is "array-like", we turn it into an array
+            // then map it to the .put() method from Firebase, which returns promises...
+            const fileUploads = Array.from(e.target.files).map((currFile) => {
+                // we store the name of the file as a storage ref
+                const fileRef = imagesRef.child(currFile.name);
+                // we return a promise where we first "put" or upload the file
+                // and then once the upload is complete, we return promise with
+                // download URL string of the file we uploaded
+                return fileRef.put(currFile).then((snapshot) => snapshot.downloadURL);
+            });
+
+            // once ALL the promises have been resolved
+            // we console.log the urls...but we can do whatever we need to with this data 
+            // from here
+            Promise.all(fileUploads).then((items) => {
+                document.getElementById("a").src = items;
+              alert('Your Profile is changed!');
+              a
+            });
+            /* END ADDED THESE LINES */
+        });
+      })();
+function Call_Data() {
+  
+db.ref('Moza/Users/' + localStorage.getItem("phone_number")).once('value', function(snapshot) {
+ var ProfilePicture = snapshot.child("Profile Pic").val();
+  ProfilePicture = ProfilePicture.replaceAll('\\' , "");
+ProfilePicture = ProfilePicture.replace(/'/ , "");
+ProfilePicture = ProfilePicture.replace(/"/ , "");
+//'""
+  var prr = snapshot.child("Profile Read").val();
+  prr = prr.replace('\\\\n' , "&#13;&#10;");
+//prr = prr.replace( , "");
+  document.getElementById("r").innerHTML = prr;
+  document.getElementById("p__r").value = snapshot.child("Profile Name").val();
+  document.getElementById("pr__r").value = document.getElementById("r").innerHTML;
+  document.getElementById("a").src = ProfilePicture;
+  
+  //console.log(document.getElementById("r").innerHTML);
+  
+});  
+} 
+function edit() {
+db.ref('Moza/Users/' + localStorage.getItem("phone_number")).once('value', function(snapshot) {
+  email = snapshot.child("Email").val();
+  followed = snapshot.child("Followed").val();
+  follower = snapshot.child("Follower").val();
+  like = snapshot.child("Liked Video").val();
+  unlike = snapshot.child("Phone Number").val();
+  search = snapshot.child("Search History").val();
+  unlike = snapshot.child("Unliked Video").val();
+  
+firebase.database().ref('Moza/Users/' + localStorage.getItem("phone_number") + '/mydata').set({   
+'Profile Pic': document.getElementById("a").src,
+'Profile Name': document.getElementById("pr__r").value,
+'Profile Read': document.getElementById("p__r"),
+'Email':email,
+'Followed':followed,
+'Follower':follower,
+'Liked Video':like,
+'Phone Number':unlike,
+'Search History':search,
+'Unliked Video':unlike,  
+});
+});
+}
+    </script>
+</body>
+<style>
+html{
+  height: 100vh;
+}
+.pic{
+  margin: auto;
+  width: 100px;
+  margin-top: 50px;
+}
+.pic img{
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  border: none;
+  border-radius: 50px;
+  background-color: #f9f9f9;
+}
+.name{
+  margin: auto;
+  width: 80vw;
+  margin-top: 20px;
+}
+.name h6{
+  width: 80vw;
+  font-size: 14px;
+  font-weight: bold;
+}  
+.name input{
+  margin: auto;
+  display: block;
+  text-align: center;  
+  width: 80vw;
+  height: 60px;
+  border: none;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+  background-color: #f5f5f5;
+}
+.read h6{
+  font-size: 14px;
+  font-weight: bold;
+} 
+.read{
+  margin: auto;
+  width: 80vw;
+  margin-top: 20px;
+}
+.read #pr__r{
+  margin: auto;
+  display: block;
+  text-align: center;  
+  width: 80vw;
+  height: 250px;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+  background-color: #f5f5f5;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  
+}
+.edit{
+  margin: auto;
+  width: 150px;
+  margin-top: 20px;
+}
+.edit button{
+  text-align: center;  
+  width: 150px;
+  height: 60px;
+  border: none;
+  border-radius: 300px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+  background-color: #f5f5f5;
+  margin-top: 30px;
+}
+#r{
+  display: none;
+}
+#close{
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  border: none;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+#edit{
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  border: none;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+</style>
+</html>
+<!--<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <title>Collecting Data</title>
+    <link rel="stylesheet"
+          href=
+"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity=
+"sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+          crossorigin="anonymous">
+ 
+</head>
+ 
+<body class="container"
+      style="margin-top: 50px;
+             width: 50% height:auto; ">
+ 
+    <h2 class="text-primary"
+        style="margin-left: 15px; margin-bottom: 10px">
+              Hey There,Here we are going to upload
+    </h2>
+    <form class="container" id="contactForm">
+        <div class="card">
+            <div class="card-body">
+ 
+                <div class="form-group"
+                     style="margin-left: 15px; 
+                            margin-top: 10px;
+                            display:none;">
+    <label for="exampleFormControlSelect1">Select Type</label>
+    <select class="form-control " id="types ">
+      <option>1</option>
+    </select>
+  </div>
+ 
+<br>
+    Document Upload:
+    <br>
+    <!-- click here to choose file 
+    <input accept="image/*" type="file " name="files[] " id="files ">
+    <!-- click here to upload file 
+                <input type="hidden "
+           name="url "
+           id="url ">    
+           <button type="button " onclick="uploadimage() ">
+               Upload Image
+            </button>
+           <br><br>
+  </div>
+</div>
+ 
+<button type="submit "
+        class="btn btn-primary "
+        style="margin-left: 15px; margin-top: 10px; display:none; ">
+           Submit
+  </button>
+ 
+</form>
+</body>
+<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js ">
+</script>
+<script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js ">
+</script>
+ 
+<link type="text/css " rel="stylesheet " href=
+"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css " />
+ 
+<script src=
+"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js ">
+</script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+<script>
+
+  
+ 
+  
+ // adding firebase data
+   var firebaseConfig = {
+    apiKey: "AIzaSyBjMWFjGpr04xzmQN9y5LlPGLe2NeI5GnY",
+  authDomain: "moza-c42fb.firebaseapp.com",
+  databaseURL: "https://moza-c42fb-default-rtdb.firebaseio.com/",
+  projectId: "moza-c42fb",
+  storageBucket: "moza-c42fb.appspot.com",
+  messagingSenderId: "256429602324",
+    appId: "1:256429602324:android:30b74a4d50239f65c71901"
+                  
+  };
+  firebase.initializeApp(firebaseConfig);
+  var messagesRef = firebase.database().ref('Checking');
+  document.getElementById(
+     'contactForm').addEventListener('submit', submitForm);
+ //uploading file in storage
+  function uploadimage(){
+     var type = getInputVal('types');
+  var storage = firebase.storage();
+  var file=document.getElementById("files ").files[0];
+  var storageref=storage.ref();
+  var thisref=storageref.child(type).child(file.name).put(file);
+  thisref.on('state_changed',function(snapshot) {
+ 
+ 
+  }, function(error) {
+  
+ }, function() {
+  // Uploaded completed successfully, now we can get the download URL
+  thisref.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+    //getting url of image
+    document.getElementById("url ").value=downloadURL;
+    alert('uploaded successfully');
+    saveMessage(downloadURL);
+   });
+  });
+ 
+  // Get values
+  var url = getInputVal('url');
+  // Save message
+  // saveMessage(url);
+}
+function getInputVal(id){
+    document.getElementById('contactForm').reset();
+ 
+}
+ 
+ 
+// Function to get form values
+function getInputVal(id){
+  return document.getElementById(id).value;
+}
+ 
+// Save message to firebase database
+function saveMessage(url){
+  var newMessageRef = messagesRef.push();
+  newMessageRef.set({
+   imageurl:url,
+  });
+}
+</script>
+</html-->
