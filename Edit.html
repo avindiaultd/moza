@@ -123,7 +123,7 @@ db.ref('Moza/Users/' + localStorage.getItem("phone_number")).once('value', funct
   search = snapshot.child("Search History").val();
   unlike = snapshot.child("Unliked Video").val();
   
-firebase.database().ref('Moza/Users/' + localStorage.getItem("phone_number") + '/mydata').set({   
+firebase.database().ref('Moza/Users/' + localStorage.getItem("phone_number")).update({   
 'Profile Pic': document.getElementById("a").src,
 'Profile Name': document.getElementById("pr__r").value,
 'Profile Read': document.getElementById("p__r"),
