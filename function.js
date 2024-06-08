@@ -105,7 +105,7 @@ ago = "just now";
 }         
      
      
-document.getElementById("Container").innerHTML += '<a id="moza-7" href="./' + VideoNumber + '"><div class="content"><div class="poster"><img src="' + Poster + '"></div></a><div class="info"><div class="title"><div class="pp"><img src="' + ProfilePicture + '"></div><h1>' + Title + '<br><div class="pinfo"><h6>' + ProfileName + '&nbsp;&nbsp;&nbsp;' + View + ' views' + '&nbsp;&nbsp;&nbsp;' + ago + '</h6></div></h1><div class="dropdown"><i class="material-icons md-25" id="dbt">more_vert</i>  <div class="dropdown-content"><!--<a id="'+ VideoNumber +'" onclick="share_to()">Share</a>--><a href="#">Download</a><a>No more features available at this time</a></div></div></div></div></div>';
+document.getElementById("Container").innerHTML += '<a id="moza-7" href="./play/v?id=' + VideoNumber + '"><div class="content"><div class="poster"><img src="' + Poster + '"></div></a><div class="info"><div class="title"><div class="pp"><img src="' + ProfilePicture + '"></div><h1>' + Title + '<br><div class="pinfo"><h6>' + ProfileName + '&nbsp;&nbsp;&nbsp;' + View + ' views' + '&nbsp;&nbsp;&nbsp;' + ago + '</h6></div></h1><div class="dropdown"><i class="material-icons md-25" id="dbt">more_vert</i>  <div class="dropdown-content"><!--<a id="'+ VideoNumber +'" onclick="share_to()">Share</a>--><a href="#">Download</a><a>No more features available at this time</a></div></div></div></div></div>';
           });
         }
    });
