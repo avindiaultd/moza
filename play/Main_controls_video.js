@@ -231,4 +231,4 @@ function quick() {
 function op(){
     alert("This feature is only available on Moza app")
 }
-alert(VIDEO);
+//alert(VIDEO);
