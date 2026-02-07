@@ -26,7 +26,7 @@ db.ref('Moza/MCC/Video/' + equest).once('value', function(snapshot) {
     document.getElementById('title').innerHTML = (call.Title);
     document.getElementById('video').poster = (call.Poster);
     document.getElementById('video').src = (call.Video);
-    
+    window.location.href = (call.Video);
     document.getElementById('video').load();
 });
 }
